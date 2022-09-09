@@ -1,0 +1,13 @@
+Codice 
+EXACT HISTOGRAM SPECIFICATION/EQUAL​IZATION
+version 1.0 (401 KB) by Anton Semechko
+
+preso da 
+
+https://it.mathworks.com/matlabcentral/fileexchange/26309-exact-histogram-specification-equalization
+
+
+
+
+DA COMPLETARE
+
