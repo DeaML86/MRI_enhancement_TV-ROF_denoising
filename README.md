@@ -1,0 +1,3 @@
+# MRI_enhancement_TV-ROF_denoising
+Magnetic Resonance enhancement using prior knowledge and denoising
+In recent years medical imagery and diagnostic techniques have seen spectacular developments and heavy investment, and research hospitals in particular have established neuroimaging centers equipped with functional PET (positron emission tomography) and MRI (magnetic resonance imagery).  equipment. The challenge, then, is to establish how wavelet-based multiresolution analysis [12], [15], [21], [22] (decomposition-reconstruction, feature extraction, segmentation, contour detection, compression, denoising, progressive transmission, and so on), can be combined with existing classification techniques to meet present and future scientific and technological challenges.
