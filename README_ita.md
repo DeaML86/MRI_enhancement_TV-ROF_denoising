@@ -1,4 +1,4 @@
-in questa cartella radice vanno gli script
+#In this fold there are scripts
 
 nelle sottocartelle
 images: le immagini da usare (RIVEDERE)
