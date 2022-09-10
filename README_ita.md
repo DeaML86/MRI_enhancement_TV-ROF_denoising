@@ -1,4 +1,4 @@
-#In this fold there are scripts
+# In this fold there are scripts
 
 nelle sottocartelle
 images: le immagini da usare (RIVEDERE)
