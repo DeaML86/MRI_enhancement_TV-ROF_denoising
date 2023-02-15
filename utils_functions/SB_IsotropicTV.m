@@ -34,15 +34,15 @@ by=zeros(n,m);
 
 kMax=20;
 Tol=10^(-3);
-
+norma=2;
 if size(varargin,2) >= 1; Tol=varargin{1}; end
 if size(varargin,2) >= 2; kMax=varargin{2}; end
 if size(varargin,2) >= 3; X=varargin{3}; end %X true!
-
+if size(varargin,2) >= 4; norma=varargin{4}; end
 %% Pre-first step
 k=0;
-if size(varargin,2)==3; p(1) = norm(f-X,2)/norm(X,2); varargout{1}=p; end
-nn(1) = norm(u,2);
+if size(varargin,2)==3; p(1) = norm(f-X,norma)/norm(X,norma); varargout{1}=p; end
+nn(1) = norm(u,norma);
 [ux,uy]= gradient(u);% u at step 1
 J(1)=mu/2*norm(u-f)^2 + sum(reshape(sqrt(ux.^2+uy.^2),[],1));
 
@@ -50,8 +50,8 @@ J(1)=mu/2*norm(u-f)^2 + sum(reshape(sqrt(ux.^2+uy.^2),[],1));
 
 %% While -> SplitBregmanIsotropicIteration
 while nn(k+1) > Tol
-    fprintf('it. %g ',k);
     k=k+1;
+    fprintf('it. %g ',k);
     uOld = u ;
 
     %compute u's %using dx, dx, i.e. grad d a
@@ -70,22 +70,23 @@ while nn(k+1) > Tol
     %dx = max(s-1/lambda,0).*((ux+bx)./s);
     %dy = max(s-1/lambda,0).*((uy+by)./s);
     dx = (s*lambda.*(ux+bx))./(s*lambda + 1);
-    dy = (s*lambda.*(uy+by))./(s*lambda+1);
+    dy = (s*lambda.*(uy+by))./(s*lambda + 1);
 
     %Compute the b's
     bx = bx + (ux - dx);
     by = by + (uy - dy);
     
-    nn(k+1) = norm(u-uOld,2)/norm(u,2);
-    if size(varargin,2)==3
-        p(k+1)= norm(u-X,2)/norm(X,2);
+    nn(k+1) = norm(u-uOld,norma)/norm(u,norma);
+    %norma
+    if size(varargin,2)>=3
+        p(k+1)= norm(u-X,norma)/norm(X,norma);
         fprintf('err.=%g \t',p(k+1));
         varargout{1}=p;  
     end
     
     fprintf('rel.err.=%g \n',nn(k+1));
     
-    if k>kMax
+    if k>=kMax
         fprintf('Stopped because n.iter > %d ; norm(up-u)/norm(u) = %.1e\n',kMax, nn(k+1));
         return; 
     end
